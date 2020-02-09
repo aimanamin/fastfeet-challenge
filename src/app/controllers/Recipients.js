@@ -1,7 +1,26 @@
+import * as Yup from 'yup';
+
 import Recipient from '../models/recipient';
 
 class RecipientController {
   async store(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      street: Yup.string().required(),
+      complemento: Yup.string(),
+      post_code: Yup.string()
+        .length(9)
+        .matches(/[0-9]{5}-[\d]{3}/)
+        .required(),
+      city_id: Yup.number()
+        .positive()
+        .required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'validation error!' });
+    }
+
     const { id, name } = await Recipient.create(req.body);
     return res.json({ id, name });
   }
@@ -28,6 +47,20 @@ class RecipientController {
   }
 
   async put(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string(),
+      street: Yup.string(),
+      complemento: Yup.string(),
+      post_code: Yup.string()
+        .length(9)
+        .matches(/[0-9]{5}-[\d]{3}/),
+      city_id: Yup.number().positive(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'validation error!' });
+    }
+
     const result = await Recipient.findByPk(req.params.id);
     if (!result) {
       return res.status(404).json({ error: 'User not found!' });
