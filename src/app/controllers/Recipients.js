@@ -69,7 +69,6 @@ class RecipientController {
       const recipient = await result.update(req.body);
       return res.json(recipient);
     } catch (error) {
-      console.error(error);
       return res.status(500);
     }
   }
