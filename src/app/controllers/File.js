@@ -6,12 +6,12 @@ class FileController {
       return res.status(400).json({ error: 'File not found in header' });
     const { originalname: name, filename: path } = req.file;
 
-    const file = await File.create({
+    const { url } = await File.create({
       name,
       path,
     });
 
-    return res.json(file);
+    return res.json(url);
   }
 }
 

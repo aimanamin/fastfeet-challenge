@@ -6,6 +6,7 @@ import RecipientController from './app/controllers/Recipients';
 import SessionController from './app/controllers/Session';
 import FileController from './app/controllers/File';
 import DeliverymanController from './app/controllers/Deliveryman';
+import DeliveryController from './app/controllers/Delivery';
 import multerConfig from './configs/multer';
 
 const routes = Router();
@@ -28,4 +29,8 @@ routes.get('/deliveryman/:id', DeliverymanController.show);
 routes.post('/deliveryman', DeliverymanController.store);
 routes.put('/deliveryman/:id', DeliverymanController.update);
 routes.delete('/deliveryman/:id', DeliverymanController.delete);
+
+routes.post('/delivery', DeliveryController.store);
+routes.delete('/delivery/:id', DeliveryController.delete);
+
 export default routes;

@@ -1,0 +1,11 @@
+<strong>Olá, {{ deliveryman }}</strong>
+<p>Há uma encomenda nova a ser retirado e entregue a:</p>
+<p>
+  <strong>Produto:</strong> {{ product }} </br>
+  <strong>Cliente:</strong> {{ recipient.name }}<br/>
+  <strong>Rua:</strong> {{ recipient.street }} <br/>
+  <strong>Complemento:</strong> {{ recipient.complemento }}<br/>
+  <strong>CEP:</strong> {{ recipient.post_code }} <br/>
+  <br/>
+  <small>A encomenda pode ser retirada a partir das 8:00</small>
+</p>
