@@ -1,0 +1,8 @@
+<strong>Olá, {{ delivery.deliveryman.name }}</strong>
+<p>Houve um cancelamento da encomenda número {{ delivery.id }}, segue as informações da encomenda:</p>
+<p>
+  <strong>Produto:</strong> {{ delivery.product }} </br>
+  <strong>Cliente:</strong> {{ delivery.recipient.name }}<br/>
+  <br/>
+  <small>A encomenda será cancelada automaticamente, sem nenhuma ação necessária a ser tomada</small>
+</p>

@@ -1,7 +1,7 @@
 import Mail from '../../lib/Mail';
 
 class NotificationJob {
-  get() {
+  get key() {
     return 'notificationJob';
   }
 
